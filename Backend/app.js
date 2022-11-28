@@ -23,11 +23,11 @@ app.use((req, res, next) => {
 });
 
 //import des routes mis dans un fichier à part
-//const stuffRoutes = require('./routes/stuff');
+const sauceRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const path = require('path');
 
-//app.use('/api/stuff', stuffRoutes);
+app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);
 //indique à Express qu'il faut géré la ressources images de manière statique(un sous répertoire de celui de base, __dirname)
 //à chaque fois qu'elle reçoit une requete vers la route /images
