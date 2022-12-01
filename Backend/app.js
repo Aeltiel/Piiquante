@@ -1,14 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express(); // création de 'lapplication Express avec la méthode express()
-mongoose.connect('',
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(() => console.log('Connexion à MongoDB réussie !'))
-    .catch(() => console.log("Connexion à MongoDB échouée !"));
+const dotenv = require("dotenv").config();
 
+const connect = process.env.CONNECTBDD;
+mongoose.connect(connect,
+{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('Connexion à MongoDB réussie !'))
+.catch(() => console.log("Connexion à MongoDB échouée !"));
 
 //permet de prendre toutes les requetes qui on comme contenu un json et met a disposition le contenu sur l'objet req
 app.use(express.json());
